@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#111827">
+    <title>Master Calc v2 · Палитра</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="toast" role="status" aria-live="polite">Система готова!</div>
+
+<nav aria-label="Разделы приложения">
+    <button class="tab-btn active" onclick="openTab('calc', this)"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z"></path><line x1="16" y1="3" x2="16" y2="21"></line><line x1="8" y1="3" x2="8" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>Расчет</button>
+    <button class="tab-btn" onclick="openTab('history', this)"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>Стат-ка</button>
+    <button class="tab-btn" onclick="openTab('settings', this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>База</button>
+</nav>
+
+<div class="app-status" role="status" aria-live="polite">
+    <span id="network-status">Проверка подключения…</span> · <span id="offline-status">Подготовка офлайн…</span>
+    <button id="update-app" hidden onclick="activateUpdate()">Обновить приложение</button>
+</div>
+<div id="calc" class="tab-content active">
+    <h2 style="text-align:center">Быстрый расчёт</h2>
+    <div class="calc-layout"><div class="calc-inputs">
+
+    <div class="card">
+        <label for="calc-client-name" class="input-label" style="display:block;margin-bottom:8px">Клиент / Примечание</label>
+        <div style="display:flex; gap:10px;">
+            <input type="text" id="calc-client-name" class="input-control" style="flex:1; text-align:left;" placeholder="Имя клиента...">
+            <button class="btn-icon" onclick="getContact()" aria-label="Выбрать клиента из контактов"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="input-row"><label class="input-label" for="rent-type">Тариф аренды</label>
+            <select id="rent-type" class="input-control"><option value="std">Стандарт</option><option value="prem">Премиум</option></select>
+        </div>
+        <div class="input-row"><label for="work-mode" class="input-label">Оплата работы</label><select id="work-mode" class="input-control"><option value="hourly">За час</option><option value="fixed">За услугу</option></select></div>
+        <div class="input-row" id="work-fixed-row" hidden><label for="work-fixed" class="input-label">Цена работы, ₽</label><input id="work-fixed" type="number" class="input-control" min="0" value="3500"></div>
+        <div class="input-row"><label class="input-label" for="work-time">Часы работы</label><input type="number" id="work-time" class="input-control" value="1" min="0" step="0.5"></div>
+        <div class="input-row"><label class="input-label" for="rent-time">Часы аренды</label><input type="number" id="rent-time" class="input-control" value="1" min="0" step="0.5"></div>
+        <div class="input-row"><label class="input-label" for="cons-count">Расходники (шт)</label><input type="number" id="cons-count" class="input-control" value="1" min="0"></div>
+    </div>
+
+    <section class="card palette-section" aria-labelledby="palette-title">
+        <div class="palette-heading"><h3 id="palette-title">Материалы</h3><button class="btn palette-all" onclick="openMaterialCatalog()">Все материалы</button></div>
+        <p class="hint">Введите количество. Пустое поле — 0. Tab или Enter — следующее поле.</p>
+        <div id="materials-palette" class="palette-grid">
+            <div class="palette-tile" id="row-estel"><label for="m-estel">Estel, г</label><input type="number" id="m-estel" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-estel">0 ₽</span></div>
+            <div class="palette-tile" id="row-bicolor"><label for="m-bicolor">Bicolor, г</label><input type="number" id="m-bicolor" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-bicolor">0 ₽</span></div>
+            <div class="palette-tile" id="row-nuk"><label for="m-nuk">NUK, г</label><input type="number" id="m-nuk" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-nuk">0 ₽</span></div>
+            <div class="palette-tile" id="row-nuk-clear"><label for="m-nuk-clear">NUK прозрачный, г</label><input type="number" id="m-nuk-clear" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-nuk-clear">0 ₽</span></div>
+            <div class="palette-tile" id="row-powder"><label for="m-powder">Пудра, г</label><input type="number" id="m-powder" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-powder">0 ₽</span></div>
+            <div class="palette-tile" id="row-oxide"><label for="m-oxide">Оксид, г</label><input type="number" id="m-oxide" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-oxide">0 ₽</span></div>
+            <div class="palette-tile" id="row-booster"><label for="m-booster">Бустер, г</label><input type="number" id="m-booster" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-booster">0 ₽</span></div>
+        </div>
+        <div id="custom-materials" class="palette-grid custom-palette"></div>
+        <div class="palette-footer"><span id="palette-subtotal">Материалы: 0 ₽</span><button class="btn palette-reset" onclick="clearMaterials()">Очистить количества</button></div>
+    </section>
+    <dialog id="material-dialog" aria-labelledby="material-dialog-title">
+        <div class="palette-heading"><h3 id="material-dialog-title">Все материалы</h3><button class="material-remove" onclick="document.getElementById('material-dialog').close()" aria-label="Закрыть каталог">×</button></div>
+        <label for="material-search" class="hint">Поиск по названию</label><input id="material-search" class="search-bar" type="search" oninput="renderMaterialChoices()" placeholder="Название материала">
+        <div id="material-choices"></div>
+        <p class="hint">Цены и состав каталога редактируются во вкладке «База».</p>
+    </dialog>
+    <details id="extras-panel" class="card"><summary>Дополнительные расходы, налог и комиссия</summary>
+        <label for="extra-name">Дополнительные прямые расходы</label>
+        <input id="extra-name" class="search-bar" placeholder="Например, транспорт или разовый расход">
+        <div class="input-row"><label for="extra-cost" class="input-label">Сумма, ₽</label><input id="extra-cost" type="number" class="input-control" min="0" value="0" step="0.01"></div>
+        <div id="extras-list"></div>
+        <button class="btn" onclick="addExtraExpense()">Добавить ещё расход</button>
+        <p class="hint">Все дополнительные расходы включаются в цену без наценки.</p>
+        <details><summary>Налог и комиссия</summary>
+            <p class="hint">Оба процента применяются к итоговой цене клиента. Укажите свои значения; по умолчанию они равны нулю.</p>
+            <div class="input-row"><label for="tax-percent">Налог от выручки, %</label><input id="tax-percent" type="number" class="input-control" value="0" min="0" step="0.1"></div>
+            <div class="input-row"><label for="fee-percent">Комиссия от выручки, %</label><input id="fee-percent" type="number" class="input-control" value="0" min="0" step="0.1"></div>
+            <label><input id="cover-deductions" type="checkbox"> Включить налог и комиссию в цену клиента</label>
+            <p class="hint">Если выключено, удержания уменьшают доход. Если включено, цена увеличивается, чтобы покрыть удержания. Каждый компонент округляется до копеек.</p>
+        </details>
+    </details>
+    <details id="templates-panel" class="card"><summary>Шаблоны услуг</summary>
+        <label for="service-template">Шаблон услуги</label>
+        <div class="material-picker"><select id="service-template" class="input-control"></select><button class="btn btn-primary" onclick="applyTemplate()">Применить</button></div>
+        <details><summary>Сохранить или удалить шаблон</summary>
+        <label for="template-name">Название нового шаблона</label>
+        <input id="template-name" class="search-bar" placeholder="Например, окрашивание корней">
+        <button class="btn btn-primary" onclick="saveTemplate()">Сохранить состав услуги</button>
+        <button class="btn" onclick="deleteTemplate()">Удалить выбранный шаблон</button>
+        <p class="hint">Состав и длительность сохраняются без имени клиента. Материалы считаются по текущим ценам.</p></details>
+    </details>
+    <p id="calc-message" class="hint" role="status"></p>
+    </div><div class="calc-results">
+    <div id="res-box" class="receipt">
+        <div class="receipt-row"><span>Оплата работы</span><span class="val" id="res-salary">0 ₽</span></div>
+        <div class="receipt-row"><span>Аренда кресла</span><span class="val" id="res-rent">0 ₽</span></div>
+        <div class="receipt-row"><span>Расходники</span><span class="val" id="res-consum">0 ₽</span></div>
+        <div class="receipt-row"><span>Налог / комиссия</span><span class="val" id="res-deductions">0 ₽</span></div>
+        <div class="receipt-row"><span>Доп. расходы</span><span class="val" id="res-extra">0 ₽</span></div>
+        <div class="receipt-row"><span>Материалы</span><span class="val" id="res-materials">0 ₽</span></div>
+        <div class="receipt-divider"></div>
+        <div class="receipt-row"><span>Прямые расходы</span><span class="val" style="color: var(--danger)" id="res-expenses">0 ₽</span></div>
+        <div class="receipt-row"><span>Наценка (от мат+расх)</span><span class="val" id="res-markup">0 ₽</span></div>
+        <div class="receipt-divider"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+            <span style="font-size:20px; font-weight:800;">ИТОГО:</span><span id="res-total" style="font-size:24px; font-weight:900; color:var(--text-main);">0 ₽</span>
+        </div>
+        <div style="text-align:right; margin-top:5px; color:var(--success); font-weight:700;" id="res-profit">Доход после расходов: 0 ₽</div>
+        <p id="save-status" role="status">Чек будет сохранён в этом браузере. Отправка в Google Forms не подтверждает приём.</p>
+        <button id="save-receipt" class="btn btn-success" onclick="saveData()">Сохранить чек</button>
+    </div>
+    </div></div>
+    <div id="mobile-summary" class="mobile-summary">
+        <span><span class="hint">Цена клиенту</span><br><strong id="quick-total">—</strong></span>
+        <button id="quick-details" class="btn btn-primary" onclick="document.getElementById('res-box').scrollIntoView({behavior:'smooth',block:'start'})">Подробнее</button>
+    </div>
+</div>
+
+<div id="history" class="tab-content">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h2 style="margin:0">Аналитика</h2>
+        <button class="btn" style="width:auto; padding:8px 15px; background:var(--surface); border:1px solid var(--border); font-size:12px;" onclick="exportExcel()" title="CSV за выбранный период и по текущему поиску">📥 Excel</button>
+    </div>
+    <div class="card" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9); border:none; text-align:center;">
+        <div style="font-size:12px; opacity:0.8;">Доход после расходов за выбранный период</div>
+        <div id="stat-total" style="font-size:32px; font-weight:900;">0 ₽</div>
+        <div id="stat-filtered" class="filtered-total">По найденному: 0 ₽</div>
+    </div>
+
+    <div class="card">
+        <label for="history-month">Месяц</label><input id="history-month" type="month" class="search-bar" onchange="selectHistoryMonth()">
+        <div class="material-picker"><label>С <input id="history-from" type="date" class="search-bar" onchange="clearHistoryMonth()"></label><label>По <input id="history-to" type="date" class="search-bar" onchange="clearHistoryMonth()"></label></div>
+        <button class="btn" onclick="resetHistoryPeriod()">За всё время</button>
+        <p id="period-stats" class="hint"></p>
+    </div>
+    <input type="text" id="search-history" class="search-bar" placeholder="🔍 Поиск клиента или материала..." aria-label="Поиск по клиенту или материалам" oninput="scheduleHistorySearch()">
+
+    <p id="history-count" class="hint" role="status"></p>
+    <button class="btn" onclick="restoreDeleted()">Восстановить удалённые чеки</button>
+    <div id="history-list"></div>
+    <button id="history-more" class="btn btn-primary" onclick="renderHistory(true)" hidden>Показать ещё 50</button>
+</div>
+
+<div id="settings" class="tab-content">
+    <h2>База цен</h2>
+    <div class="card">
+        <p>История хранится в этом браузере. Резервная копия включает чеки и тарифы.</p>
+        <button class="btn btn-primary" onclick="exportBackup()">Скачать резервную копию</button>
+        <label style="display:block;margin-top:16px">Восстановить из JSON
+            <input type="file" accept=".json,application/json" onchange="importBackup(this)">
+        </label>
+    </div>
+    <div class="section-title">Ставки и Аренда</div>
+    <div class="card">
+        <div class="input-row"><label class="input-label" for="s-hour">Цена работы <span>За 1 час</span></label><input type="number" id="s-hour" class="input-control" value="3500"></div>
+        <div class="input-row"><label class="input-label" for="s-rent-std">Аренда Стандарт <span>За 1 час</span></label><input type="number" id="s-rent-std" class="input-control" value="320"></div>
+        <div class="input-row"><label class="input-label" for="s-rent-prem">Аренда Премиум <span>За 1 час</span></label><input type="number" id="s-rent-prem" class="input-control" value="420"></div>
+    </div>
+    <div class="section-title">Расходники и Наценка</div>
+    <div class="card">
+        <div class="input-row"><label class="input-label" for="s-cons">Расходники <span>За 1 комплект</span></label><input type="number" id="s-cons" class="input-control" value="300"></div>
+        <div class="input-row"><label class="input-label" for="s-mark">Наценка <span>0.5 = 50%</span></label><input type="number" id="s-mark" class="input-control" value="0.5" step="0.1"></div>
+    </div>
+    <div class="section-title">Каталог материалов</div>
+    <div class="card">
+        <div id="catalog-list"></div>
+        <input id="catalog-id" type="hidden">
+        <label for="catalog-name">Название</label><input id="catalog-name" class="search-bar">
+        <label for="catalog-unit">Единица</label><select id="catalog-unit" class="search-bar"><option value="г">г</option><option value="мл">мл</option><option value="шт">шт</option></select>
+        <label for="catalog-price">Цена упаковки или единицы, ₽</label><input id="catalog-price" type="number" class="search-bar" min="0" step="0.01" value="0">
+        <label for="catalog-pack">Количество в упаковке (1 для цены за единицу)</label><input id="catalog-pack" type="number" class="search-bar" min="0.001" step="any" value="1">
+        <button class="btn btn-primary" onclick="saveCatalogItem()">Сохранить материал</button>
+        <button class="btn" onclick="clearCatalogEditor()">Новый материал</button>
+        <p class="hint">Архивные материалы не доступны для добавления. Сохранённые чеки остаются неизменными.</p>
+    </div>
+    <div hidden>    <div class="section-title">Красители (за 1 гр)</div>
+    <div class="card">
+        <div class="input-row"><label class="input-label" for="p-estel">Estel</label><input type="number" id="p-estel" class="input-control" value="7.75" step="0.01"></div>
+        <div class="input-row"><label class="input-label" for="p-bicolor">Bicolor</label><input type="number" id="p-bicolor" class="input-control" value="11.71" step="0.01"></div>
+        <div class="input-row"><label class="input-label" for="p-nuk">NUK</label><input type="number" id="p-nuk" class="input-control" value="19.6" step="0.01"></div>
+        <div class="input-row"><label class="input-label" for="p-nuk-clear">NUK прозрачный</label><input type="number" id="p-nuk-clear" class="input-control" value="7" step="0.01"></div>
+    </div>
+    <div class="section-title">Прочие материалы (за 1 гр)</div>
+    <div class="card">
+        <div class="input-row"><label class="input-label" for="p-powder">Пудра</label><input type="number" id="p-powder" class="input-control" value="5" step="0.01"></div>
+        <div class="input-row"><label class="input-label" for="p-oxide">Оксид</label><input type="number" id="p-oxide" class="input-control" value="1" step="0.01"></div>
+        <div class="input-row"><label class="input-label" for="p-booster">Бустер</label><input type="number" id="p-booster" class="input-control" value="30.4" step="0.1"></div>
+    </div>
+</div>
+    <button class="btn btn-primary" onclick="saveSettings()">Сохранить настройки</button>
+</div>
+
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
