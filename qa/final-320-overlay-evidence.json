@@ -1,0 +1,53 @@
+{
+  "resultVisible": true,
+  "saveVisible": true,
+  "saveDisabled": false,
+  "templateSaved": 0,
+  "events": [
+    {
+      "type": "pointerdown",
+      "target": "BUTTON",
+      "text": "Сохранить состав услуги",
+      "summaryDisplay": "none",
+      "calcValid": true,
+      "saveDisabled": false,
+      "resDisplay": "block"
+    },
+    {
+      "type": "change",
+      "target": "template-name",
+      "text": "",
+      "summaryDisplay": "flex",
+      "calcValid": true,
+      "saveDisabled": false,
+      "resDisplay": "block"
+    },
+    {
+      "type": "focusout",
+      "target": "template-name",
+      "text": "",
+      "summaryDisplay": "flex",
+      "calcValid": true,
+      "saveDisabled": false,
+      "resDisplay": "block"
+    },
+    {
+      "type": "pointerup",
+      "target": "quick-details",
+      "text": "Подробнее",
+      "summaryDisplay": "flex",
+      "calcValid": true,
+      "saveDisabled": false,
+      "resDisplay": "block"
+    },
+    {
+      "type": "click",
+      "target": "calc",
+      "text": "Быстрый расчётНовый расчёт\n    Отменить изменения и вернуть черновик\n    \n    \n\n    \n     ",
+      "summaryDisplay": "flex",
+      "calcValid": true,
+      "saveDisabled": false,
+      "resDisplay": "block"
+    }
+  ]
+}

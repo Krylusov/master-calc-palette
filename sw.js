@@ -1,6 +1,6 @@
 /* Versioned app shell. All files must be available before an update installs. */
 const CACHE_PREFIX = 'master-calc-v2-palette-';
-const CACHE_NAME = 'master-calc-v2-palette-d563cd749b3c';
+const CACHE_NAME = 'master-calc-v2-palette-1e7b4d21b836';
 const APP_FILES = ['./', './index.html', './styles.css', './core.js', './app.js', './manifest.json', './icon.png'];
 const APP_URLS = new Set(APP_FILES.map(path => new URL(path, self.location.href).href));
 const INDEX_URL = new URL('./index.html', self.location.href).href;

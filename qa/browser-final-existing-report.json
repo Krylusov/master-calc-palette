@@ -1,0 +1,112 @@
+{
+  "scope": "STAGE_ALL_PREPARED_HIGH_RISK_CHECKPOINT",
+  "releaseAcceptance": "NOT COMPLETE",
+  "head": "22dabbc26f015ecdd8852daf838062aeb06aae63",
+  "timestamp": "2026-10-28T15:17:32.987Z",
+  "launchArgs": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "hashes": {
+    "index.html": "1596ea2d251f9648348aeae505aacb69ac1859b8d0aec3a363a318adcf353775",
+    "app.js": "5941ea3e3779911ccf287830d1ec162803abdec30a5bfc34a4582a44bed6c229",
+    "styles.css": "fc8b604dd78cae3c4ee7fb29c9b85946004bf580edbb1039f8ed50efad220b13",
+    "core.js": "11d3b8d2f2aff8393f9803e7c82c90866331969261d3d03234b4d9761acac3bf"
+  },
+  "checks": [
+    {
+      "id": "D02-browser-e",
+      "name": "real number badInput persists invalidity through reload and recovers only on field input",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "D06-corruption",
+      "name": "corrupt draft source survives input and reload until explicit reset",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "D03-new",
+      "name": "New calculation cancel preserves, accept resets raw fields, parts, extras and client without resurrection",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "M03-active",
+      "name": "active builtin and custom quantities remain visible and charged after unpin/archive and reload",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "T01-old-schema",
+      "name": "old schema1 draft restores exact decimal hours and minutes mode preserves nonrepresentable precision",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "T01-minute-e",
+      "name": "exact minute entry survives toggles/reload and real minute badInput remains recoverable",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "C01-same-name",
+      "name": "dated same-name visits remain separate; name selection preserves pending composition and recoverable draft",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "C04-cancel",
+      "name": "template and receipt-repeat cancellation retain populated draft and historical receipt",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "B02-import-cancel",
+      "name": "backup preview cancellation and malformed JSON preserve exact storage and draft",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "B04-old-backup",
+      "name": "legacy backup without Google preference preserves disabled sending, including after reload and new save",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "B06-copy-privacy",
+      "name": "actual client-summary copy contains only client name/date/price and triggers no transmission",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "X-first-save",
+      "name": "regression: first Save click from edited focused field must persist one receipt",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "X-first-copy",
+      "name": "regression: first copy click from edited focused field must copy client summary",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    }
+  ],
+  "realPhoneKeyboard": "NOT TESTED",
+  "browserVersion": "153.0.8010.0"
+}

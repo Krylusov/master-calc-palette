@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="theme-color" content="#111827">
-    <title>Master Calc v2 · Палитра</title>
+    <title>Master Calc v2.1.0 · Палитра</title>
 
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icon.png">
@@ -17,24 +17,29 @@
 
 <nav aria-label="Разделы приложения">
     <button class="tab-btn active" onclick="openTab('calc', this)"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z"></path><line x1="16" y1="3" x2="16" y2="21"></line><line x1="8" y1="3" x2="8" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>Расчет</button>
-    <button class="tab-btn" onclick="openTab('history', this)"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>Стат-ка</button>
-    <button class="tab-btn" onclick="openTab('settings', this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>База</button>
+    <button class="tab-btn" onclick="openTab('history', this)"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>История</button>
+    <button class="tab-btn" onclick="openTab('settings', this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Настройки</button>
 </nav>
 
 <div class="app-status" role="status" aria-live="polite">
     <span id="network-status">Проверка подключения…</span> · <span id="offline-status">Подготовка офлайн…</span>
     <button id="update-app" hidden onclick="activateUpdate()">Обновить приложение</button>
 </div>
+<p id="backup-reminder" class="backup-reminder hint" role="status" hidden></p>
 <div id="calc" class="tab-content active">
-    <h2 style="text-align:center">Быстрый расчёт</h2>
+    <div class="draft-toolbar"><h2>Быстрый расчёт</h2><button class="btn" onclick="startNewCalculation()">Новый расчёт</button></div>
+    <div id="edit-banner" class="card edit-banner" role="status" hidden><p id="edit-message"></p><button type="button" class="btn" onclick="cancelReceiptEdit()">Отменить изменения и вернуть черновик</button></div>
+    <div id="draft-banner" class="card draft-banner" role="status" aria-live="polite" hidden><p id="draft-message"></p></div>
     <div class="calc-layout"><div class="calc-inputs">
 
     <div class="card">
         <label for="calc-client-name" class="input-label" style="display:block;margin-bottom:8px">Клиент / Примечание</label>
         <div style="display:flex; gap:10px;">
-            <input type="text" id="calc-client-name" class="input-control" style="flex:1; text-align:left;" placeholder="Имя клиента...">
+            <input type="text" id="calc-client-name" class="input-control" style="flex:1; text-align:left;" placeholder="Имя клиента..." autocomplete="off" aria-describedby="client-history-hint">
             <button class="btn-icon" onclick="getContact()" aria-label="Выбрать клиента из контактов"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
         </div>
+        <p id="client-history-hint" class="hint">Имя необязательно. Подсказки из местной истории меняют только имя; одинаковые имена могут принадлежать разным людям.</p>
+        <div id="client-suggestions" aria-label="Визиты из истории" hidden></div>
     </div>
 
     <div class="card">
@@ -43,8 +48,14 @@
         </div>
         <div class="input-row"><label for="work-mode" class="input-label">Оплата работы</label><select id="work-mode" class="input-control"><option value="hourly">За час</option><option value="fixed">За услугу</option></select></div>
         <div class="input-row" id="work-fixed-row" hidden><label for="work-fixed" class="input-label">Цена работы, ₽</label><input id="work-fixed" type="number" class="input-control" min="0" value="3500"></div>
-        <div class="input-row"><label class="input-label" for="work-time">Часы работы</label><input type="number" id="work-time" class="input-control" value="1" min="0" step="0.5"></div>
-        <div class="input-row"><label class="input-label" for="rent-time">Часы аренды</label><input type="number" id="rent-time" class="input-control" value="1" min="0" step="0.5"></div>
+        <div class="input-row"><label for="duration-display">Ввод времени</label><select id="duration-display" class="input-control"><option value="decimal">Часы дробью</option><option value="minutes">Часы и минуты</option></select></div>
+        <label class="rent-link-label"><input id="rent-link" type="checkbox"> Аренда равна времени работы</label>
+        <div class="input-row" id="work-decimal-row"><label class="input-label" for="work-time">Часы работы</label><input type="number" id="work-time" class="input-control" value="1" min="0" step="any"></div>
+        <div id="work-duration-parts" class="duration-parts" hidden><span>Работа</span><div><label for="work-hours">Часы</label><input id="work-hours" type="number" class="input-control" value="1" min="0" step="1" inputmode="numeric"><label for="work-minutes">Минуты</label><input id="work-minutes" type="number" class="input-control" value="0" min="0" max="59" step="1" inputmode="numeric"></div></div>
+        <p id="work-duration-fallback" class="hint" hidden>Точное время сохранено в дробных часах: оно содержит неполные минуты.</p>
+        <div class="input-row" id="rent-decimal-row"><label class="input-label" for="rent-time">Часы аренды</label><input type="number" id="rent-time" class="input-control" value="1" min="0" step="any"></div>
+        <div id="rent-duration-parts" class="duration-parts" hidden><span>Аренда</span><div><label for="rent-hours">Часы</label><input id="rent-hours" type="number" class="input-control" value="1" min="0" step="1" inputmode="numeric"><label for="rent-minutes">Минуты</label><input id="rent-minutes" type="number" class="input-control" value="0" min="0" max="59" step="1" inputmode="numeric"></div></div>
+        <p id="rent-duration-fallback" class="hint" hidden>Точное время сохранено в дробных часах: оно содержит неполные минуты.</p>
         <div class="input-row"><label class="input-label" for="cons-count">Расходники (шт)</label><input type="number" id="cons-count" class="input-control" value="1" min="0"></div>
     </div>
 
@@ -59,15 +70,15 @@
             <div class="palette-tile" id="row-powder"><label for="m-powder">Пудра, г</label><input type="number" id="m-powder" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-powder">0 ₽</span></div>
             <div class="palette-tile" id="row-oxide"><label for="m-oxide">Оксид, г</label><input type="number" id="m-oxide" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-oxide">0 ₽</span></div>
             <div class="palette-tile" id="row-booster"><label for="m-booster">Бустер, г</label><input type="number" id="m-booster" class="input-control" value="" placeholder="0" min="0" step="0.1" inputmode="decimal"><span class="palette-cost" id="cost-booster">0 ₽</span></div>
+        <div id="custom-materials" class="custom-palette"></div>
         </div>
-        <div id="custom-materials" class="palette-grid custom-palette"></div>
         <div class="palette-footer"><span id="palette-subtotal">Материалы: 0 ₽</span><button class="btn palette-reset" onclick="clearMaterials()">Очистить количества</button></div>
     </section>
     <dialog id="material-dialog" aria-labelledby="material-dialog-title">
         <div class="palette-heading"><h3 id="material-dialog-title">Все материалы</h3><button class="material-remove" onclick="document.getElementById('material-dialog').close()" aria-label="Закрыть каталог">×</button></div>
         <label for="material-search" class="hint">Поиск по названию</label><input id="material-search" class="search-bar" type="search" oninput="renderMaterialChoices()" placeholder="Название материала">
         <div id="material-choices"></div>
-        <p class="hint">Цены и состав каталога редактируются во вкладке «База».</p>
+        <p class="hint">Цены и состав каталога редактируются во вкладке «Настройки».</p>
     </dialog>
     <details id="extras-panel" class="card"><summary>Дополнительные расходы, налог и комиссия</summary>
         <label for="extra-name">Дополнительные прямые расходы</label>
@@ -94,30 +105,40 @@
         <button class="btn" onclick="deleteTemplate()">Удалить выбранный шаблон</button>
         <p class="hint">Состав и длительность сохраняются без имени клиента. Материалы считаются по текущим ценам.</p></details>
     </details>
+    <div class="card actual-price-panel">
+        <label><input type="checkbox" id="actual-price-enabled"> Указать фактическую цену клиенту</label>
+        <div id="actual-price-controls" hidden><label for="actual-price">Фактическая цена, ₽</label><input id="actual-price" class="input-control" type="number" min="0" step="0.01" inputmode="decimal" value=""><button type="button" class="btn" onclick="resetActualPrice()">Вернуть расчётную цену</button></div>
+        <p id="actual-price-note" class="hint" role="status"></p>
+    </div>
     <p id="calc-message" class="hint" role="status"></p>
     </div><div class="calc-results">
     <div id="res-box" class="receipt">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+            <span style="font-size:20px; font-weight:800;">ИТОГО:</span><span id="res-total" style="font-size:24px; font-weight:900; color:var(--text-main);">0 ₽</span>
+        </div>
+        <div style="text-align:right; margin-top:5px; color:var(--success); font-weight:700;" id="res-profit">Доход после расходов: 0 ₽</div>
+        <p id="res-quote" class="hint"></p><p id="negative-income" class="loss-warning" role="status" hidden>Отрицательный доход: цена не покрывает расходы и удержания.</p>
+        <div class="receipt-row"><span>Материалы</span><span class="val" id="res-materials">0 ₽</span></div>
+        <details id="result-details"><summary>Подробности расчёта</summary>
         <div class="receipt-row"><span>Оплата работы</span><span class="val" id="res-salary">0 ₽</span></div>
         <div class="receipt-row"><span>Аренда кресла</span><span class="val" id="res-rent">0 ₽</span></div>
         <div class="receipt-row"><span>Расходники</span><span class="val" id="res-consum">0 ₽</span></div>
         <div class="receipt-row"><span>Налог / комиссия</span><span class="val" id="res-deductions">0 ₽</span></div>
         <div class="receipt-row"><span>Доп. расходы</span><span class="val" id="res-extra">0 ₽</span></div>
-        <div class="receipt-row"><span>Материалы</span><span class="val" id="res-materials">0 ₽</span></div>
         <div class="receipt-divider"></div>
-        <div class="receipt-row"><span>Прямые расходы</span><span class="val" style="color: var(--danger)" id="res-expenses">0 ₽</span></div>
+        <div class="receipt-row"><span>Расходы и удержания</span><span class="val" style="color: var(--danger)" id="res-expenses">0 ₽</span></div>
         <div class="receipt-row"><span>Наценка (от мат+расх)</span><span class="val" id="res-markup">0 ₽</span></div>
         <div class="receipt-divider"></div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-            <span style="font-size:20px; font-weight:800;">ИТОГО:</span><span id="res-total" style="font-size:24px; font-weight:900; color:var(--text-main);">0 ₽</span>
-        </div>
-        <div style="text-align:right; margin-top:5px; color:var(--success); font-weight:700;" id="res-profit">Доход после расходов: 0 ₽</div>
-        <p id="save-status" role="status">Чек будет сохранён в этом браузере. Отправка в Google Forms не подтверждает приём.</p>
+        </details>
+        <p id="save-result" role="status" hidden></p>
+        <p id="save-status" role="status">Новый чек будет сохранён в этом браузере. Google Forms: при наличии сети будет попытка отправки; приём не подтверждается.</p>
+        <button class="btn" onclick="copyClientSummary()">Скопировать цену для клиента</button>
         <button id="save-receipt" class="btn btn-success" onclick="saveData()">Сохранить чек</button>
     </div>
     </div></div>
     <div id="mobile-summary" class="mobile-summary">
-        <span><span class="hint">Цена клиенту</span><br><strong id="quick-total">—</strong></span>
-        <button id="quick-details" class="btn btn-primary" onclick="document.getElementById('res-box').scrollIntoView({behavior:'smooth',block:'start'})">Подробнее</button>
+        <span><span class="hint">Цена клиенту</span><br><strong id="quick-total">—</strong><br><span class="quick-secondary">Доход: <b id="quick-profit">—</b><br>Материалы: <b id="quick-materials">—</b></span></span>
+        <button id="quick-details" class="btn btn-primary" onclick="document.getElementById('result-details').open=true;document.getElementById('res-box').scrollIntoView({behavior:'smooth',block:'start'})">Подробнее</button>
     </div>
 </div>
 
@@ -147,14 +168,16 @@
 </div>
 
 <div id="settings" class="tab-content">
-    <h2>База цен</h2>
+    <h2>Настройки</h2>
     <div class="card">
-        <p>История хранится в этом браузере. Резервная копия включает чеки и тарифы.</p>
+        <p>Локальная копия: история хранится в этом браузере. JSON включает чеки, удалённые чеки, тарифы, каталог и шаблоны.</p>
+        <p id="backup-status" class="hint" role="status"></p>
         <button class="btn btn-primary" onclick="exportBackup()">Скачать резервную копию</button>
         <label style="display:block;margin-top:16px">Восстановить из JSON
             <input type="file" accept=".json,application/json" onchange="importBackup(this)">
         </label>
     </div>
+    <div class="card"><h3>Google Forms</h3><label><input id="google-send" type="checkbox" onchange="saveGooglePreference()"> Пробовать отправлять новые чеки при наличии сети</label><p class="hint">Это отдельная отправка, а не резервная копия. Приём и сохранность в Google Forms не подтверждаются. Старые чеки автоматически не отправляются.</p></div>
     <div class="section-title">Ставки и Аренда</div>
     <div class="card">
         <div class="input-row"><label class="input-label" for="s-hour">Цена работы <span>За 1 час</span></label><input type="number" id="s-hour" class="input-control" value="3500"></div>
@@ -166,7 +189,8 @@
         <div class="input-row"><label class="input-label" for="s-cons">Расходники <span>За 1 комплект</span></label><input type="number" id="s-cons" class="input-control" value="300"></div>
         <div class="input-row"><label class="input-label" for="s-mark">Наценка <span>0.5 = 50%</span></label><input type="number" id="s-mark" class="input-control" value="0.5" step="0.1"></div>
     </div>
-    <div class="section-title">Каталог материалов</div>
+    <div class="section-title">Каталог и избранные материалы</div>
+    <p class="hint">★ закрепляет материал в палитре. Стрелки меняют постоянный порядок. Количества в текущем расчёте сохраняются после снятия звезды и архивации.</p>
     <div class="card">
         <div id="catalog-list"></div>
         <input id="catalog-id" type="hidden">
@@ -195,6 +219,14 @@
     <button class="btn btn-primary" onclick="saveSettings()">Сохранить настройки</button>
 </div>
 
+<dialog id="receipt-dialog" aria-labelledby="receipt-dialog-title">
+    <div class="palette-heading"><h3 id="receipt-dialog-title">Сохранённый чек</h3><button class="material-remove" onclick="document.getElementById('receipt-dialog').close()" aria-label="Закрыть чек">×</button></div>
+    <div id="receipt-content"></div><div id="receipt-actions"></div>
+    <button class="btn" onclick="copyClientSummary(viewedReceiptId)">Скопировать цену для клиента</button>
+    <p class="hint">Повтор создаст новый расчёт по текущим тарифам. Сохранённый чек останется прежним.</p>
+    <button id="receipt-repeat" class="btn btn-primary" onclick="loadReceipt(viewedReceiptId)">Повторить по текущим тарифам</button>
+</dialog>
+<dialog id="client-copy-dialog" aria-labelledby="client-copy-title"><h3 id="client-copy-title">Текст для клиента</h3><p class="hint">Скопируйте текст вручную. Он содержит только имя, дату и цену.</p><textarea id="client-copy-text" class="search-bar" rows="5" readonly aria-label="Текст для копирования"></textarea><button class="btn" onclick="document.getElementById('client-copy-dialog').close()">Закрыть</button></dialog>
 <script src="core.js"></script>
 <script src="app.js"></script>
 </body>

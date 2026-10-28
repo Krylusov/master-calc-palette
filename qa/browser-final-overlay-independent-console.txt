@@ -1,0 +1,58 @@
+{
+  "scope": "STAGE_5_HIGH_RISK_CHECKPOINT",
+  "releaseAcceptance": "NOT COMPLETE",
+  "head": "606d41b588e98465f16d2225147a6e96d0eef249",
+  "timestamp": "2026-10-28T15:45:02.484Z",
+  "launchArgs": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "hashes": {
+    "index.html": "4f63ab7654ad6f9d0ea888c875985899c9f6047573fc4c722637274dd07b9f51",
+    "app.js": "1afcf9f40ccd4ffb832a7d5c735a4ba845a95ce51fdf9bdbef997caf4c750500",
+    "styles.css": "b34d1872e7aa64351768c7bc48055eb2d2fd30737ef81dfd845a058e16a80823",
+    "core.js": "11d3b8d2f2aff8393f9803e7c82c90866331969261d3d03234b4d9761acac3bf"
+  },
+  "checks": [
+    {
+      "id": "F1-cancel-status",
+      "name": "cancelling receipt edit restores honest new-receipt Google sending status",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F3-template-results",
+      "name": "saving a valid service template keeps calculated result and first-click receipt action available",
+      "status": "FAIL",
+      "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#template-name')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"template-name\" class=\"search-bar\" placeholder=\"Например, окрашивание корней\"/>\u001b[22m\n\u001b[2m    - fill(\"No drag duplicate\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    60 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at Object.fn (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:147:4110)\n    at async /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:154:1561",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F1-cancel-status-file",
+      "name": "cancelling receipt edit restores honest new-receipt Google sending status",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F3-template-results-file",
+      "name": "saving a valid service template keeps calculated result and first-click receipt action available",
+      "status": "FAIL",
+      "error": "locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#template-name')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"template-name\" class=\"search-bar\" placeholder=\"Например, окрашивание корней\"/>\u001b[22m\n\u001b[2m    - fill(\"No drag duplicate\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    60 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at Object.fn (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:147:4110)\n    at async /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:154:1561",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F2-update-copy",
+      "name": "explicit update uses honest saved/failed-draft wording and retains exact saved draft after consent",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    }
+  ],
+  "realPhoneKeyboard": "NOT TESTED",
+  "browserVersion": "153.0.8010.0"
+}

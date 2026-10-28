@@ -1,0 +1,10 @@
+first real click saves after material input without pre-blur
+first real copy click after material input writes client summary
+historical original prices survive reload and cancel restores prior invalid draft
+4600 actual revenue => tax276 fee92 exp988 income3612 with cover enabled; edit preserves identity/no send
+two-tab stale undo rejects; fresh selected original restores and retains flat versions
+two-tab stale edit rejects without overwrite and keeps session
+negative income visible, saveable and no horizontal overflow at320px
+legacy estel zero/save/reopen/reload/re-add retains original price and restricted v3 backup snapshot
+legacy custom-old zero/save/reopen/reload/re-add retains original price and restricted v3 backup snapshot
+{"checks":["first real click saves after material input without pre-blur","first real copy click after material input writes client summary","historical original prices survive reload and cancel restores prior invalid draft","4600 actual revenue => tax276 fee92 exp988 income3612 with cover enabled; edit preserves identity/no send","two-tab stale undo rejects; fresh selected original restores and retains flat versions","two-tab stale edit rejects without overwrite and keeps session","negative income visible, saveable and no horizontal overflow at320px","legacy estel zero/save/reopen/reload/re-add retains original price and restricted v3 backup snapshot","legacy custom-old zero/save/reopen/reload/re-add retains original price and restricted v3 backup snapshot"],"errors":[],"blocked":[]}

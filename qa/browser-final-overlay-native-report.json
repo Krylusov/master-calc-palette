@@ -1,0 +1,35 @@
+{
+  "scope": "STAGE_5_HIGH_RISK_CHECKPOINT",
+  "releaseAcceptance": "NOT COMPLETE",
+  "head": "606d41b588e98465f16d2225147a6e96d0eef249",
+  "timestamp": "2026-10-28T15:46:36.056Z",
+  "launchArgs": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "hashes": {
+    "index.html": "4f63ab7654ad6f9d0ea888c875985899c9f6047573fc4c722637274dd07b9f51",
+    "app.js": "1afcf9f40ccd4ffb832a7d5c735a4ba845a95ce51fdf9bdbef997caf4c750500",
+    "styles.css": "b34d1872e7aa64351768c7bc48055eb2d2fd30737ef81dfd845a058e16a80823",
+    "core.js": "11d3b8d2f2aff8393f9803e7c82c90866331969261d3d03234b4d9761acac3bf"
+  },
+  "checks": [
+    {
+      "id": "F3-template-results",
+      "name": "saving a valid service template keeps calculated result and first-click receipt action available",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F3-template-results-file",
+      "name": "saving a valid service template keeps calculated result and first-click receipt action available",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    }
+  ],
+  "realPhoneKeyboard": "NOT TESTED",
+  "browserVersion": "153.0.8010.0"
+}

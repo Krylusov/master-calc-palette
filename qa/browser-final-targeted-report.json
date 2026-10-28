@@ -1,0 +1,51 @@
+{
+  "scope": "STAGE_ALL_PREPARED_HIGH_RISK_CHECKPOINT",
+  "releaseAcceptance": "NOT COMPLETE",
+  "head": "22dabbc26f015ecdd8852daf838062aeb06aae63",
+  "timestamp": "2026-10-28T15:25:29.574Z",
+  "launchArgs": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "hashes": {
+    "index.html": "1596ea2d251f9648348aeae505aacb69ac1859b8d0aec3a363a318adcf353775",
+    "app.js": "5941ea3e3779911ccf287830d1ec162803abdec30a5bfc34a4582a44bed6c229",
+    "styles.css": "fc8b604dd78cae3c4ee7fb29c9b85946004bf580edbb1039f8ed50efad220b13",
+    "core.js": "11d3b8d2f2aff8393f9803e7c82c90866331969261d3d03234b4d9761acac3bf"
+  },
+  "checks": [
+    {
+      "id": "G01-layout-keyboard-time",
+      "name": "fresh default, four widths/tabs/dialogs, accessible controls, keyboard favorites/order and explicit rent link",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "P01-P05-price",
+      "name": "actual kopecks stay pinned; deductions/income reconcile; reset, loss/nonpositive guards and recipes omit discount",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F1-cancel-status",
+      "name": "cancelling receipt edit restores honest new-receipt Google sending status",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /Изменения сохранятся|без повторной отправки|Google Forms не отправлялся/. Input:\n\n'Изменения сохранятся только в этом браузере, без повторной отправки в Google Forms.'\n\n    at Object.fn (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:144:1116)\n    at async /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:149:1552",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F3-template-results",
+      "name": "saving a valid service template keeps calculated result and first-click receipt action available",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at Object.fn (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:147:825)\n    at async /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:149:1552",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    }
+  ],
+  "realPhoneKeyboard": "NOT TESTED",
+  "browserVersion": "153.0.8010.0"
+}

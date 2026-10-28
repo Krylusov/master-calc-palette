@@ -1,0 +1,42 @@
+{
+  "scope": "STAGE_ALL_PREPARED_HIGH_RISK_CHECKPOINT",
+  "releaseAcceptance": "NOT COMPLETE",
+  "head": "final-fix-canonical",
+  "timestamp": "2026-10-28T15:28:09.385Z",
+  "launchArgs": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "hashes": {
+    "index.html": "4f63ab7654ad6f9d0ea888c875985899c9f6047573fc4c722637274dd07b9f51",
+    "app.js": "77b0a5a6b31da1d058beb62df4489529974abf291303113a16a5fa6a2458f377",
+    "styles.css": "fc8b604dd78cae3c4ee7fb29c9b85946004bf580edbb1039f8ed50efad220b13",
+    "core.js": "11d3b8d2f2aff8393f9803e7c82c90866331969261d3d03234b4d9761acac3bf"
+  },
+  "checks": [
+    {
+      "id": "P01-P05-price",
+      "name": "actual kopecks stay pinned; deductions/income reconcile; reset, loss/nonpositive guards and recipes omit discount",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F1-cancel-status",
+      "name": "cancelling receipt edit restores honest new-receipt Google sending status",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "F3-template-results",
+      "name": "saving a valid service template keeps calculated result and first-click receipt action available",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    }
+  ],
+  "realPhoneKeyboard": "NOT TESTED",
+  "browserVersion": "153.0.8010.0"
+}

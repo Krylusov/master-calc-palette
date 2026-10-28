@@ -106,7 +106,7 @@
 .palette-cost {display:block;color:var(--text-muted);font-size:12px;}
 .palette-footer {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:12px;font-size:14px;}
 .palette-reset {width:auto;padding:10px;font-size:12px;}
-.custom-palette:not(:empty) {margin-top:10px;}
+.custom-palette {display:contents;}
 .palette-custom-remove {position:absolute;right:2px;bottom:0;background:transparent;color:var(--text-muted);border:0;font-size:22px;width:44px;}
 .material-choice {display:flex;width:100%;justify-content:space-between;gap:12px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text-main);margin-bottom:8px;text-align:left;}
 .material-choice span {color:var(--text-muted);white-space:nowrap;}
@@ -115,3 +115,38 @@ dialog::backdrop {background:rgba(0,0,0,.7);}
 details.card > summary {cursor:pointer;font-weight:600;min-height:32px;}
 details.card[open] > summary {margin-bottom:16px;}
 @media(max-width:600px){.palette-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.palette-tile{padding:10px;}}
+
+.draft-toolbar {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:16px;}
+.draft-toolbar h2 {margin:0;font-size:22px;}
+.draft-toolbar .btn {width:auto;padding:10px 12px;font-size:14px;border:1px solid var(--border);}
+.draft-banner {border-color:var(--primary);overflow-wrap:anywhere;}
+.draft-banner p {margin:0;font-size:14px;line-height:1.5;}
+.draft-banner.draft-error {border-color:var(--danger);}
+#calc input[aria-invalid="true"] {border-color:var(--danger);}
+
+.palette-settings-controls {display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+.palette-settings-controls button {border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text-main);padding:8px 12px;}
+.rent-link-label {display:flex;align-items:center;gap:8px;font-size:14px;}
+.duration-parts {padding:10px 0;border-bottom:1px solid var(--border);}
+.duration-parts > div {display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.duration-parts .input-control {width:65px;}
+#result-details {margin-top:16px;}
+#result-details summary {cursor:pointer;min-height:44px;color:var(--text-main);}
+@media(max-width:849px){body:has(#calc input:focus) .mobile-summary,.mobile-summary.activation-pending{display:none;}body{padding-bottom:205px;}}
+.quick-secondary{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+.client-visit {display:flex;align-items:center;gap:8px;border-top:1px solid var(--border);padding:6px 0;}
+.client-name-choice {flex:1;min-width:0;text-align:left;background:var(--surface);color:var(--text-main);border:1px solid var(--border);border-radius:8px;padding:10px;overflow-wrap:anywhere;}
+.client-name-choice span {display:block;font-size:12px;color:var(--text-muted);margin-top:4px;}
+.client-visit .btn,.btn-view {width:auto;padding:10px;font-size:13px;}
+#client-suggestions {max-height:300px;overflow:auto;}
+#receipt-content {overflow-wrap:anywhere;}
+#receipt-content .receipt-row {gap:12px;flex-wrap:wrap;}
+#receipt-dialog .btn {margin-top:10px;white-space:normal;}
+.backup-reminder {padding:10px 14px;border:1px solid var(--border);border-radius:10px;}
+
+.edit-banner {border:2px solid var(--primary); overflow-wrap:anywhere;}
+.loss-warning {color:var(--danger);font-weight:700;}
+.actual-price-panel label {display:block;}
+#actual-price-controls {margin-top:12px;}
+#actual-price-controls .input-control {display:block;width:100%;max-width:100%;margin:8px 0;text-align:left;}

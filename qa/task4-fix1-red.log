@@ -1,0 +1,156 @@
+5000 receipts: first page prepared in 20.2 ms (Node, without browser layout)
+✔ default and material calculations preserve self-employed income (28.158907ms)
+✔ migration merges and preserves current record on ID conflict (2.038411ms)
+✔ invalid existing history is not overwritten (1.961185ms)
+✔ partial settings use defaults, valid zeros are preserved (3.844423ms)
+✔ invalid inputs cannot retain a previously valid calculation (6.083856ms)
+✔ repeat preserves zero hours and consumables (4.624073ms)
+✔ save recalculates current fields and prevents double save (3.783211ms)
+✔ storage failure keeps inputs and current calculation for retry (3.023289ms)
+✔ submission failure retains local receipt without duplication on retry (4.782231ms)
+✔ import merges duplicates and retains existing receipts (5.836144ms)
+✔ invalid backup cannot alter history (2.190119ms)
+✔ backup can restore damaged history while preserving original snapshot (3.138943ms)
+✔ automatic recalculation uses the latest input after rapid edits (5.622558ms)
+✔ empty intermediate input disables saving quietly and recovers (2.027845ms)
+✔ palette quantities can be entered immediately and cleared without hiding tiles (2.948107ms)
+✔ 5000 receipts render in pages with accurate totals and filtered search (58.569716ms)
+✔ alternative uses hourly rent with fixed work and extra expenses (2.564681ms)
+✔ custom package material uses unit price and snapshots its cost (2.866625ms)
+✔ piece material rejects fractional quantities (2.57731ms)
+✔ template excludes client name and uses current material rates (4.131313ms)
+✔ catalog edit archive and reactivation preserve receipt snapshots (7.440362ms)
+✔ monthly analytics include boundaries and exclude unknown dates (1.973994ms)
+✔ v3 backup restores catalog and templates, v2 retains current config (4.397584ms)
+✔ offline save never attempts submission and records local status (3.473425ms)
+✔ online save records unconfirmed attempt, not confirmed cloud receipt (3.016769ms)
+✔ multiple expenses and configurable deductions preserve financial identity (2.443749ms)
+✔ invalid raw expense IDs cannot enter imported templates or receipts (1.724459ms)
+✔ delete and restore preserve check contents and totals (2.798102ms)
+✔ CSV selection follows date period and client search, formula names escaped (1.421475ms)
+✔ blank material fields count as zero while blank hours remain invalid (1.929277ms)
+✔ legacy fixed rent receipt repeats under explicit hourly alternative (2.454155ms)
+✔ palette never changes original site storage on a shared origin (3.070822ms)
+✔ incomplete browser number input is invalid even when empty materials are allowed (3.700115ms)
+✔ untouched startup and pagehide do not create a draft (3.727147ms)
+✔ draft restores exposed raw invalid strings, blanks, client, extras, selections and context (16.6623ms)
+✔ input persists before calculation debounce and pagehide flushes latest fields (4.845956ms)
+✔ browser badInput material stays invalid after reload until a genuine field input (6.143354ms)
+✔ new calculation guards existing draft and resets every calculation field and pending timer (8.272471ms)
+✔ successful receipt save clears draft and cannot resurrect old client after input/pagehide (7.470468ms)
+✔ failed receipt write retains recoverable draft and current client for retry (6.211757ms)
+✔ draft write failure leaves existing source intact and displays lasting honest warning (3.720807ms)
+✔ corrupt and unsupported drafts preserve source until explicit new calculation (11.310464ms)
+✔ missing selected draft material preserves source and restores nothing partially (7.407364ms)
+✔ new calculation refuses to discard form when draft removal fails (3.393636ms)
+✔ saved receipt prevents resurrection even when draft removal fails (9.07098ms)
+✔ programmatic receipt, template and contact updates persist their current client (23.380346ms)
+✔ explicit material clear removes restored invalid markers and persists a valid draft (10.210563ms)
+✔ valid programmatic raw replacement clears old invalid markers before calculation (10.726126ms)
+✔ dynamic rerender retains incomplete material and expense validity until edited or removed (14.797719ms)
+✔ unreadable draft storage blocks overwrite and shows persistent warning (2.435016ms)
+✔ retired draft stays retired when saved receipt has moved to deleted history (11.384569ms)
+✔ saving a new receipt does not erase an unrestorable draft source (12.328607ms)
+✔ successful import persists final composition and retained client context before pagehide (16.484683ms)
+✔ successful import preserves blocked draft source and its warning (3.377672ms)
+✔ settings pin and order include custom materials and survive reload (8.540404ms)
+✔ active unpinned and archived materials remain visible and charged (7.343126ms)
+✔ hours and minutes presentation preserves exact legacy durations with decimal fallback (7.059135ms)
+✔ rent link is explicit and manual decimal or minute rent input unlinks (6.811297ms)
+✔ partial minute input stays invalid and recoverable and reset removes duration link (7.01949ms)
+✔ legacy draft without duration and palette additions remains loadable (8.244841ms)
+✔ invalid minute range is preserved through draft reload without becoming valid (7.772811ms)
+✔ unpinned active custom material survives reload with exact quantity (8.567785ms)
+✔ draft duration cannot inject unrelated input IDs during recovery (2.746484ms)
+✔ linking valid work replaces recovered invalid rent parts and clears errors (11.904497ms)
+✔ corrected decimal time clears replaced invalid minute markers (10.085463ms)
+✔ linking invalid work cannot clear its bad input state or make the calculation valid (7.684528ms)
+✔ local suggestions retain dated visits with duplicate names and selection only changes name (6.193881ms)
+✔ receipt viewing uses saved values without touching raw draft or current calculation (3.952375ms)
+✔ repeat and template replacement cancellation preserves populated raw draft (8.707856ms)
+✔ repeat is a new calculation using current tariffs and leaving historical receipt intact (3.247245ms)
+✔ client summary copy omits private income costs rates and recipe (9.415238ms)
+✔ backup export records honest last download state and changed receipt reminder without blocking (5.523204ms)
+✔ import has one clear preview and cancel leaves history config settings and draft untouched (4.254488ms)
+✔ optional Google preference defaults to prior sending and opt-out is backed up with config (8.947065ms)
+✔ old v3 backup without Google preference preserves an existing opt-out (5.230593ms)
+✔ template on otherwise untouched form needs no replacement confirmation (4.047948ms)
+✔ copy fallback exposes only client text for manual selection without transmission (2.074675ms)
+✔ new calculation clears suggestions from the previous client (4.493047ms)
+✔ manual actual price stays pinned in draft and repeat/template reset it (8.896419ms)
+✔ historical edit preserves all original rates catalog ID date and revisions without send (10.690072ms)
+✔ edit cancel restores exact prior draft even after reload and current catalog changes (8.920414ms)
+✔ concurrent edit and undo reject without writes (4.810794ms)
+✔ legacy snapshots restrict materials and missing snapshots explicitly disable editing (4.344574ms)
+✔ revision validation rejects recursion and malformed snapshots but accepts old raw backups (1.188424ms)
+✔ edit write failure and cancel failure retain source receipt session and prior draft (6.810296ms)
+✔ actual price invalid intermediate persists and negative income is visible and saveable (6.037376ms)
+✔ new materials after a receipt cannot acquire invented historical prices (5.199217ms)
+✔ text and number blur change cannot invalidate a valid first save or copy (15.019924ms)
+✔ select any flat revision including original after multiple edits, all retained (21.890509ms)
+✔ v3 backup round trip retains full original and revisions with additive actual fields (9.884222ms)
+✔ committed edit with failed draft cleanup recovers prior draft on reload without duplicate commit (10.784214ms)
+✔ applying imported template explicitly strips actual price override (2.834185ms)
+✖ legacy built-in and custom historical prices survive zero/remove save, reload, re-add and backup (6.23385ms)
+✖ unpriced zero legacy placeholders never create missing DOM fields or invented prices (2.565322ms)
+ℹ tests 94
+ℹ suites 0
+ℹ pass 92
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 829.360045
+
+✖ failing tests:
+
+test at tests/reliability.test.cjs:136:1
+✖ legacy built-in and custom historical prices survive zero/remove save, reload, re-add and backup (6.23385ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - [
+  -   {
+  -     id: 'estel',
+  -     name: 'Исторический материал',
+  -     unit: 'г',
+  -     unitPrice: 1.25
+  -   }
+  - ]
+  
+      at TestContext.<anonymous> (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/tests/reliability.test.cjs:136:941)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: [ { id: 'estel', name: 'Исторический материал', unit: 'г', unitPrice: 1.25 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/reliability.test.cjs:137:1
+✖ unpriced zero legacy placeholders never create missing DOM fields or invented prices (2.565322ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/tests/reliability.test.cjs:137:384)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

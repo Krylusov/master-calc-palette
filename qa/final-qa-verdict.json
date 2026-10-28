@@ -1,0 +1,21 @@
+{
+  "head": "606d41b588e98465f16d2225147a6e96d0eef249",
+  "verdict": "PASS_WITH_EXPLICIT_DEVICE_LIMIT",
+  "acceptanceRows": 43,
+  "pass": 42,
+  "fail": 0,
+  "blocked": 1,
+  "blockedRows": [
+    "T04"
+  ],
+  "fullMatrixRerunOnFinalHead": false,
+  "baselineHead": "22dabbc26f015ecdd8852daf838062aeb06aae63",
+  "finalScopedReports": [
+    "browser-final-overlay-native-report.json",
+    "browser-final-overlay-independent-report.json"
+  ],
+  "artifactReport": "final-artifact-verification.json",
+  "unresolvedProductDefects": [],
+  "actualExternalSends": 0,
+  "physicalPhoneKeyboardTested": false
+}

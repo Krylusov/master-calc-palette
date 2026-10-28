@@ -28,9 +28,14 @@
             total = safe(total + Math.ceil((base - (total - taxCost - feeCost) + 1) / (1 - taxRate - feeRate)));
             taxCost = safe(Math.round(total * taxRate)); feeCost = safe(Math.round(total * feeRate));
         }
+        const quotedTotal = total;
+        if (input.actualPrice !== undefined) {
+            total = cents(input.actualPrice);
+            taxCost = safe(Math.round(total * taxRate)); feeCost = safe(Math.round(total * feeRate));
+        }
         const exp = safe(rent + consumables + matCost + extraCost + taxCost + feeCost);
         const profit = safe(total - exp);
-        const amounts = {salary, rent, consumables, matCost, extraCost, markup, base, taxCost, feeCost, total, exp, profit};
+        const amounts = {salary, rent, consumables, matCost, extraCost, markup, base, taxCost, feeCost, quotedTotal, total, exp, profit};
         return {cents: amounts, ...Object.fromEntries(Object.entries(amounts).map(([key,value]) => [key,value/100]))};
     }
     const api = Object.freeze({cents, calculateQuote});

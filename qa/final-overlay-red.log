@@ -1,0 +1,12 @@
+AssertionError [ERR_ASSERTION]: First pointer activation must save exactly one template
+
+0 !== 1
+
+    at /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/tests/overlay.browser.cjs:23:98 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}

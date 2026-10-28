@@ -1,0 +1,93 @@
+{
+  "scope": "STAGE_4_HIGH_RISK_CHECKPOINT",
+  "releaseAcceptance": "NOT COMPLETE",
+  "head": "22dabbc26f015ecdd8852daf838062aeb06aae63",
+  "timestamp": "2026-10-28T15:22:00.541Z",
+  "launchArgs": [
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "hashes": {
+    "index.html": "1596ea2d251f9648348aeae505aacb69ac1859b8d0aec3a363a318adcf353775",
+    "app.js": "5941ea3e3779911ccf287830d1ec162803abdec30a5bfc34a4582a44bed6c229",
+    "styles.css": "fc8b604dd78cae3c4ee7fb29c9b85946004bf580edbb1039f8ed50efad220b13",
+    "core.js": "11d3b8d2f2aff8393f9803e7c82c90866331969261d3d03234b4d9761acac3bf"
+  },
+  "checks": [
+    {
+      "id": "G01-layout-keyboard-time",
+      "name": "fresh default, four widths/tabs/dialogs, accessible controls, keyboard favorites/order and explicit rent link",
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at Object.fn (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:106:656)\n    at async /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:141:1552",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "D01-D05-durable",
+      "name": "rich raw draft, source-preserving commit failure, successful single save and no resurrection",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "G04-B03-O04-storage",
+      "name": "original app sentinels, invalid import variants, delete/restore and schema2 backup import",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "E01-E03-E07-original",
+      "name": "historical prices/names/units, prior invalid manual draft restore, immutable revisions, roundtrip and undo",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "E04-E05-concurrent",
+      "name": "two tabs reject stale receipt edit and stale undo without overwriting newer revision",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "E06-C03-legacy",
+      "name": "missing original snapshots prohibit edit but historical view/repeat work at current rates",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "P01-P05-price",
+      "name": "actual kopecks stay pinned; deductions/income reconcile; reset, loss/nonpositive guards and recipes omit discount",
+      "status": "FAIL",
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Сохранить чек', exact: true })\u001b[22m\n\n    at Object.fn (/workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:130:901)\n    at async /workspace/scratch/9e43d68a63ef/master-calc-v2-palette/.superpowers/sdd/ux-v21/qa/final-browser-check.cjs:141:1552",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "B01-reminder",
+      "name": "backup timestamp and create/edit/delete change reminder remain nonblocking",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "O01-O03-pwa",
+      "name": "real SW offline reload/save and explicit worker update retain receipts, drafts and original caches",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    },
+    {
+      "id": "O02-standalone",
+      "name": "actual standalone file offline: native invalid input, first-click save/copy, persisted receipt and historical edit/undo",
+      "status": "PASS",
+      "pageErrors": [],
+      "blockedExternalRequests": []
+    }
+  ],
+  "realPhoneKeyboard": "NOT TESTED",
+  "browserVersion": "153.0.8010.0"
+}
